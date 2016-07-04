@@ -1,0 +1,21 @@
+h2 {
+  font-size: 2em;
+}
+
+.showInline {
+  display: inline;
+}
+
+.showBlock {
+  display: block;
+}
+
+.hide {
+  display: none;
+}
+
+.showInlineBlock {
+  display: inline-block;
+  width: 300px;
+  background-color: plum;
+}

@@ -1,0 +1,29 @@
+body {
+  background-color: plum;
+}
+
+.outer {
+  background-color: tomato;
+}
+
+#menu {
+  background-color: linen;
+}
+
+/*descendent*/
+#menu li {
+  list-style-type: none;
+}
+
+article > p {
+  background-color: yellow;
+}
+
+.warning {
+  color: lime;
+}
+
+em.desire {
+  font-size: 200%;
+}
+
