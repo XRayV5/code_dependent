@@ -1,0 +1,59 @@
+
+/* block, inline, inline-block */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-image: url('images/background.jpg');
+  background-repeat: repeat-x;
+  background-color: #d3d3d3;
+}
+
+#logo {
+  display: block;
+  margin: 2em auto 2em auto;
+}
+
+.container {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.container > * {
+  display: inline-block;
+  vertical-align: top;
+}
+
+main {
+  width: 60%;
+  background-color: pink;
+
+}
+
+aside {
+  padding: 1em;
+  width: 39%;
+  background-color: mistyrose;
+}
+
+article img {
+  width: 100%;
+}
+
+
+article footer {
+  border-top: 1px dashed black;
+  border-bottom: 1px solid black;
+  padding: 0.5em 0.5em; 
+} 
+
+aside ul {
+  list-style: none;
+  padding: 0;
+}
+
+aside img {
+  width: 100%;
+}

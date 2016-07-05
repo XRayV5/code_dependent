@@ -1,0 +1,40 @@
+.box {
+  width: 200px;
+  height: 100px;
+  border: 1px solid blue;
+  margin-bottom: 5px;
+}
+
+.position-static {
+  position: static;
+}
+
+.position-fixed {
+  position: fixed;
+  top: 0;
+  right: 0;
+  background-color: red;
+}
+
+.position-relative {
+  position: relative;
+  left: 40px;
+  background-color: pink;
+}
+
+.position-absolute {
+  position: absolute;
+  left: 20px;
+  background-color: linen;
+}
+
+.container > div {
+  float: left;
+  height: 100px;
+  width: 50%;
+  box-sizing: border-box;
+}
+
+.container > div:first-child {
+  background-color: pink;
+}
