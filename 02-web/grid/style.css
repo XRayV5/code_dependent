@@ -1,0 +1,88 @@
+body {
+  /*width: 600px;*/
+  width: 100%;
+  margin: 0 auto;
+}
+
+nav ul {
+  margin: 0;
+  padding: 0;
+}
+
+nav li {
+  list-style: none;
+  text-align: center;
+  padding: 0.5em 0;
+}
+
+nav li:nth-child(even) {
+  background-color: pink;
+}
+
+.span-1, 
+.span-2, 
+.span-3 {
+  min-height: 100px;
+  float: left;
+  /*margin-right: 20px; 20 / 600*/
+  /*margin-right: 3.333333%;*/
+  margin-bottom: 2%;
+  width: 100%;
+}
+
+.span-1 {
+  background-color: mistyrose;
+  /*width: 180px;  180 / 600  = 0.3*/
+  /*width: 30%;*/
+}
+
+.span-2 {
+  background-color: linen;
+  /* width: 380px;  380 / 600 */
+  /*width: 63.333333%;*/
+}
+
+.span-3 {
+  background-color: tomato;
+  /*width: 580px;*/
+  /*width: 96.666666%;*/
+}
+
+img {
+  max-width: 100%;
+}
+
+@media (min-width: 40em) {
+
+  nav li {
+    float: left;
+    padding-left: 1em;
+    padding-right: 2em;
+    background-color: pink;
+  }
+
+  .span-1, .span-2, .span-3 {
+    margin-right: 3.333333%;
+    /*margin-left: ;*/
+  }
+
+  .span-3 {
+    width: 96.66666%;
+  } 
+
+  .span-2 {
+    width: 63.33333%;
+  }
+
+  .span-1 {
+    width: 30%;
+  }
+}
+
+@media (min-width: 80em) {
+
+  body {
+    background-color: plum;
+    width: 80%;
+  }
+}
