@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>todor</title>
+  <style>
+    
+    .done {
+      text-decoration: line-through;
+      background-color: pink;
+      border: 1px solid purple;
+    }
+
+    li span {
+      background-color: yellow;
+    }
+
+  </style>
+</head>
+<body>
+
+  <input id="newTodoInput" type="text">
+  <button id="addBtn">add</button>
+  
+  <h2>todos</h2>
+  <ul id="todos">
+    <li>have fun <span>done</span></li>
+    <li>have more fun</li>
+  </ul>
+
+  <h2>completed</h2>
+  <ul id="completed">
+    
+  </ul>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.js"></script>
+  <script src="todor_jquery.js"></script>
+</body>
+</html>
