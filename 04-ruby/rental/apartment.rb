@@ -1,6 +1,8 @@
 class Apartment
+  attr_accessor :price, :renters
 
-  def initialize
+  def initialize(price)
+    @price = price
     @renters = []
   end
 
