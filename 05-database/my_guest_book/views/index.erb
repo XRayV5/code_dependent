@@ -1,0 +1,12 @@
+<h1>my guest book</h1>
+
+<form action="">
+  <label for="">name</label>
+  <input type="text">
+
+  <button>submit</button>
+</form>
+
+<% @guests.each do |guest| %>
+  <p><%= guest['name'] %></p>
+<% end %>
