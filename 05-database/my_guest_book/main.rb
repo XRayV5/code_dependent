@@ -3,14 +3,26 @@ require 'sinatra/reloader'
 require 'pg'
 require 'pry'
 
+# connecting to database
+require_relative 'db_config'
+
+# mapping class to table
+require_relative 'models/guest'
+
 get '/' do
-  # connect to database
-  db = PG.connect(dbname: 'guestbook')
-  # read from the table using SQL SELECT statement
-  # assign results return to @guests
-  # @guests = [{'name' => 'mum'}, {'name' => 'dad'}]
-  @guests = db.exec('SELECT * FROM guests;')
-  # close the database close
-  db.close
+  @guests = Guest.all
   erb :index
+end
+
+post '/guests' do
+  guest = Guest.new
+  guest.name = params[:name]
+  guest.save
+  redirect to '/'
+end
+
+delete '/guests/:id' do
+  guest = Guest.find( params[:id] )
+  guest.destroy
+  redirect to '/'
 end

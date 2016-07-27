@@ -1,12 +1,18 @@
 <h1>my guest book</h1>
 
-<form action="">
+<form action="/guests" method="post">
   <label for="">name</label>
-  <input type="text">
+  <input type="text" name="name">
 
   <button>submit</button>
 </form>
 
 <% @guests.each do |guest| %>
-  <p><%= guest['name'] %></p>
+  <div>
+    <%= guest.name %>
+    <form action="/guests/<%= guest.id %>" method="post">
+      <input type="hidden" name="_method" value="delete">
+      <button>delete</button>
+    </form>
+  </div>
 <% end %>
