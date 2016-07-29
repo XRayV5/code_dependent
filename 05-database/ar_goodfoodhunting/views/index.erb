@@ -1,6 +1,9 @@
 <h1>goodfoodhunting</h1>
 
-<a href="/dishes/new">new dish</a>
+  <% if logged_in? %>
+  <a href="/dishes/new">new dish</a>
+  <% end %>
+
 
 <% @dishes.each do |dish| %>
   <h2><%= dish['name'] %></h2>

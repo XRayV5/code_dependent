@@ -5,6 +5,25 @@ require 'pry'
 
 require_relative 'db_config'
 require_relative 'models/dish'
+require_relative 'models/user'
+
+enable :sessions
+
+helpers do
+
+  def logged_in?
+    if User.find_by(id: session[:user_id])
+      return true
+    else
+      return false
+    end
+  end
+
+  def current_user
+    User.find(session[:user_id])
+  end
+
+end
 
 def run_sql(sql)
   # connect to database
@@ -24,14 +43,26 @@ end
 
 # http verb + path = route
 get '/dishes/new' do
+  if !logged_in?
+    redirect to '/session/new'
+  end
+
   erb :new
 end
 
 post '/dishes' do
-  # save the dish to database
-  sql = "INSERT INTO dishes (name, image_url) VALUES ('#{ params[:name] }', '#{ params[:image_url] }');"
 
-  run_sql(sql)
+  if !logged_in?
+    redirect to '/session/new'
+  end
+
+  # save the dish to database
+  # sql = "INSERT INTO dishes (name, image_url) VALUES ('#{ params[:name] }', '#{ params[:image_url] }');"
+  # run_sql(sql)
+  dish = Dish.new
+  dish.name = params[:name]
+  dish.image_url = params[:image_url]
+  dish.save
 
   # db = PG.connect(dbname: 'goodfoodhunting')
   # db.exec(sql)
@@ -75,7 +106,39 @@ delete '/dishes/:id' do
   run_sql(sql)
 
   redirect to "/"
-end 
+end
+
+
+get '/session/new' do # getting the form
+  erb :login
+end
+
+post '/session' do # creating the resource
+  # find the user with the email
+  user = User.find_by(email: params[:email])
+  # check the user with the password
+  if user && user.authenticate(params[:password])
+    # good to go
+    session[:user_id] = user.id
+    redirect to '/'
+  else
+    # show the login template
+    erb :login
+  end
+end
+
+delete '/session' do
+  session[:user_id] = nil
+  redirect to '/session/new'
+end
+
+get '/my_dishes' do
+  @dishes = Dish.where(user_id: current_user.id)
+  erb :my_dishes
+end
+
+
+
 
 
 
