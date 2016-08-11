@@ -1,0 +1,36 @@
+<a href="/dishes/new">new dish</a>
+
+<% @dishes.each do |dish| %>
+<div class="dish">
+  <h2><%= dish.name %></h2>
+  
+  <form action="/likes" method="post">
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+    <input type="hidden" name="dish_id" value="<%= dish.id %>">
+    <button>like this!</button>
+  </form>
+
+  <button class="js-like">like with js</button>
+
+  <p>likes: <span class="like-count"><%= dish.likes.count %></span></p>
+  <a href="/dishes/<%= dish.id %>">
+    <img src="<%= dish.image_url %>" alt="">
+  </a>
+</div>
+<% end %>
+
+<script>
+  $('.js-like').on('click', function(event) {
+    // $(event.target).closest('.dish').find('.like-count').html('bingo');
+
+    // restful routes
+
+    $.ajax({
+      url: '/api/likes',
+      method: 'post'
+    }).done(function() {
+      console.log('successfully made an ajax request');
+    });
+
+  });
+</script>
