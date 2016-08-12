@@ -1,7 +1,7 @@
 <a href="/dishes/new">new dish</a>
 
 <% @dishes.each do |dish| %>
-<div class="dish">
+<div class="dish" data-id="<%= dish.id %>">
   <h2><%= dish.name %></h2>
   
   <form action="/likes" method="post">
@@ -22,14 +22,18 @@
 <script>
   $('.js-like').on('click', function(event) {
     // $(event.target).closest('.dish').find('.like-count').html('bingo');
-
+    var $dishDiv = $(event.target).closest('.dish');
+    var dishId = $dishDiv.data('id');
+    var $likeCountSpan = $dishDiv.find('.like-count');
     // restful routes
 
     $.ajax({
       url: '/api/likes',
+      data: { dish_id: dishId },
       method: 'post'
-    }).done(function() {
-      console.log('successfully made an ajax request');
+    }).done(function(response) {
+      // locate the span with class .like-count relative to event.target
+      $likeCountSpan.html(response.like_count);
     });
 
   });
