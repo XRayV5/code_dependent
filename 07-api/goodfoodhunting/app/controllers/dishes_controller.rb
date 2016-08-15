@@ -25,9 +25,8 @@ class DishesController < ApplicationController
 
   def destroy
     @dish = Dish.find(params[:id])
-
-    @dish.likes.destroy_all
-    @dish.comments.destroy_all
+    # @dish.likes.destroy_all
+    # @dish.comments.destroy_all
     @dish.destroy
 
     redirect_to '/dishes'
