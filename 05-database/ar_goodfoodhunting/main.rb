@@ -62,6 +62,7 @@ post '/dishes' do
   dish = Dish.new
   dish.name = params[:name]
   dish.image_url = params[:image_url]
+  dish.user_id = current_user.id # the creator of the dish is the current user
   dish.save
 
   # db = PG.connect(dbname: 'goodfoodhunting')
@@ -133,7 +134,7 @@ delete '/session' do
 end
 
 get '/my_dishes' do
-  @dishes = Dish.where(user_id: current_user.id)
+  @dishes = current_user.dishes
   erb :my_dishes
 end
 
