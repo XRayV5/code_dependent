@@ -1,0 +1,66 @@
+
+
+
+.avatar {
+  width: 2em;
+  height: 2em;
+  border-radius: 100%;
+  display: inline-block; /* reminder */
+  vertical-align: middle;
+}
+
+.content {
+  padding: .7em;
+}
+
+.right {
+  float: right;
+}
+
+.ui-card {
+  width: 100%;
+}
+
+.card-header {
+  line-height: 2em;
+}
+
+.image {
+  position: relative;
+}
+
+.star {
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: yellow;
+  font-size: 3em;
+  transition: 1s;
+  opacity: 0;
+  /*display: none;*/
+}
+
+.image img {
+  width: 100%;
+}
+
+.image:hover .star {
+  /*display: block;*/
+  color: red;
+  opacity: 1;
+}
+
+@media (min-width: 30em) {
+
+  .listing {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .ui-card {
+    width: 23%;
+    margin: 1%;
+  }
+}
+
